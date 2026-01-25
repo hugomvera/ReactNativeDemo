@@ -1,13 +1,6 @@
 import { registerRootComponent } from "expo";
-import React from "react";
+import { React, useState } from "react";
 import { Text, StyleSheet, View, Button, Alert, Platform } from "react-native";
-
-let globalCounter = 0;
-
-function setCounter() {
-  globalCounter = 1 + globalCounter;
-  showAlert(globalCounter);
-}
 
 function showAlert(message) {
   if (Platform.OS === "web") {
@@ -18,15 +11,19 @@ function showAlert(message) {
 }
 
 const App = () => {
+  const [count, setCount] = useState(0);
+  function setCounter() {
+    setCount(count + 1);
+  }
   return (
     <View style={styles.screen}>
       <Text style={styles.container1}> Hello World </Text>
       <Text style={styles.container2}>
         {" "}
-        This is the number of times you have pressd the Button{globalCounter}
+        Tis the number of times you have pressd the Button{count}
       </Text>
       <Button
-        onPress={setCounter()}
+        onPress={setCounter}
         title="Learn More"
         color="#841584"
         //    accessibilityLabel="Learn more about this purple button"
