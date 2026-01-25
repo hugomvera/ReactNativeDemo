@@ -1,0 +1,167 @@
+ this is the script on react native list
+
+
+
+introdcution. supppose that we wanted to add a set numnber of items in the app. 
+
+
+lets say that we put in  a number and then when it hits enter it creates an n number of rows or items. 
+
+lets first add a input field to our button on the right of the button if all goes well 
+
+in order to do that we need to have this tag in 
+
+  <TextInput
+      style={styles.input}
+      onChangeText={onChangeText}
+      value={text}
+    />
+
+we also need a hook for the text i talked about this on my provous video link in the descripton 
+
+
+const [text, onChangueText] = useState('Useless Text');
+
+
+this will keep track of the text variable and weheter you want to call on change text everytime it changes. however we will tie it to the button press. 
+
+it might be probalmatic or a little trigger happy if everythime a leteter changes then it would be the case that that function is called
+
+
+let go ahead and add it now to the code ,  i will make thigs easier for me and place the code right afdter the button code. 
+
+action place the code righ after the buttoon 
+
+
+we also need to add the use state variables and the set fucntion 
+
+we add it right after the oter use state vairbales and set function 
+
+action do that
+
+lastley  we need to import thigs here 
+
+
+we need to import TextInput from react native 
+
+action   do it
+
+
+how that we got all that working  lets change it so isnteaead of putting a hjnumber of the times the button has pressed now we can change that text to whatever is the inpout 
+
+leave it as a question to them and also ask what do you think will happen . 
+
+
+
+in the prevous paradigmsi the text would not update unless the button was pressed and that was tied to that proecess but in aour case because we use reacteive lements we get that the text chjanges key by key 
+
+
+
+now that we know the text is cahnging let us make it so everytime we hit that button to progress we need it to show in . wo when we hit enter a new item is created. 
+
+ inorder to do that we need to use flat list
+
+
+ the reaslon to use a flatlist is that it is a lirbary from react native that it is for displayuing  many items like an array of thigs as input and the output is the rows of items in our case. 
+
+ we will make a array of things to do  or some data scruttreu..  
+
+
+ anyways let us look in the flatlist Documentation 
+
+
+we will need to create an array  I will assume your are familiar with arrays and stacks and quues. if not its fine 
+
+probalby the hardest thing to wrap aroudn that the data needs to be in a maping it needs a unique id and a some data associated it with it like text
+
+
+the Data needs to be in the form of 
+
+key mapping form 
+where the there is a key like 
+
+1 -> "todo 1"
+2 -> "todo 2"
+.
+.
+.
+n -> "todo n"
+
+
+in javascript it needs to be of the form 
+
+
+const Data  = [
+{
+id:1,
+title:"First Todo"
+  },
+{id:2,
+title:"second Todo"
+
+  },
+{id:3,
+title:"Third Todo"},
+
+
+]
+
+now we can look at the tag for the flat list 
+ it will need 3 things the data obvouly that is data, a way to get the key from the data that is the id and lastly the items that need to be renbder 
+
+
+ data will be like 
+
+ data ={Data}
+
+
+ the key extractor will look like 
+
+ keyExtractore  = {item => item.id}
+
+ it stablises a correalation between the item and and id
+
+
+ lastly how the items will be rendered
+
+ in our case 
+
+ renderItem={({item}) => <Text> {item.title} <Text/>}
+
+
+when we put it all togheter it should be like this 
+
+
+<FlatList
+data = {DATA}
+renderItem = {({item}) => <Text> {item.title} <Text/>  }
+keyExtractor={item => item.id}
+/>
+
+
+we need to place the data at the very top afdter the imports
+
+and also we need the flat list the last thing before the view ends
+
+do not forget to put in the import for the flast list under react nmative 
+
+  and there we have the list so far 
+
+  the thing that was in memrory it is alreayd reneder and we want to may be now if we tipe it in the input box then to put into the data and add things . 
+
+
+
+
+
+
+
+
+ref 
+https://www.w3schools.com/js/js_arrays.asp
+https://reactnative.dev/docs/flatlist
+https://reactnative.dev/docs/button
+
+
+
+
+firs we need to improt the FlatList library
