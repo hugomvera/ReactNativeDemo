@@ -1,24 +1,6 @@
 import { registerRootComponent } from "expo";
 import { React, useState } from "react";
-import {
-  FlatList,
-  TextInput,
-  Text,
-  StyleSheet,
-  View,
-  Button,
-  Alert,
-  Platform,
-} from "react-native";
-
-const DATA = [
-  {
-    id: 1,
-    title: "First Todo",
-  },
-  { id: 2, title: "second Todo" },
-  { id: 3, title: "Third Todo" },
-];
+import { Text, StyleSheet, View, Button, Alert, Platform } from "react-native";
 
 function showAlert(message) {
   if (Platform.OS === "web") {
@@ -30,9 +12,6 @@ function showAlert(message) {
 
 const App = () => {
   const [count, setCount] = useState(0);
-
-  const [text, onChangeText] = useState("");
-
   function setCounter() {
     setCount(count + 1);
   }
@@ -41,25 +20,13 @@ const App = () => {
       <Text style={styles.container1}> Hello World </Text>
       <Text style={styles.container2}>
         {" "}
-        Tis the number of times you have pressd the Button{text}
+        Tis the number of times you have pressd the Button{count}
       </Text>
       <Button
         onPress={setCounter}
         title="Learn More"
         color="#841584"
         //    accessibilityLabel="Learn more about this purple button"
-      />
-
-      <TextInput
-        style={styles.container1}
-        onChangeText={onChangeText}
-        value={text}
-      />
-
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => <Text> {item.title} </Text>}
-        keyExtractor={(item) => item.id}
       />
     </View>
   );
