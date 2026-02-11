@@ -11,7 +11,7 @@ import {
   Platform,
 } from "react-native";
 
-// FIX: Ensure IDs are strings for the keyExtractor
+// This is the data its in object with id and title
 const DATA = [
   { id: "1", title: "todo1" },
   { id: "2", title: "todo2" },
@@ -19,9 +19,14 @@ const DATA = [
 ];
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [text, onChangeText] = useState("dummy text");
+  //this keeps a count so at first it should be the lenght of the data
+  const [count, setCount] = useState(DATA.length + 1);
 
+  //this keeps track of the input text
+  //on changetext gets called when it changes
+  const [text, onChangeText] = useState("Todo ...");
+
+  //increments the lenght of the count of todo items by 1
   function setCounter() {
     setCount(count + 1);
   }
@@ -30,15 +35,24 @@ const App = () => {
     <View style={styles.screen}>
       {/*
       <Text style={styles.container2}>
-        Tis the number of times you have pressd the Button: {count}
+        is the number of times you have pressd the Button: {count}
       </Text>
       */}
+      {/*this is the button that will add the todo task*/}
       <Button onPress={setCounter} title="Add Task" color="#841584" />
+      {/* text input for the item users will write here */}
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
         value={text}
       />
+      {/*this is the flatlist container this is where the data will be rendered
+      and every item shown as a list
+            data takes in the data
+            render item will go though every item and make a text 
+            keyextractor will grab the unique id and keep track
+
+        */}
       <View style={styles.listContainer}>
         <FlatList
           data={DATA}
