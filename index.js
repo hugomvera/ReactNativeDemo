@@ -28,11 +28,12 @@ const App = () => {
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.container1}> Hello World </Text>
+      {/*
       <Text style={styles.container2}>
         Tis the number of times you have pressd the Button: {count}
       </Text>
-      <Button onPress={setCounter} title="Learn More" color="#841584" />
+      */}
+      <Button onPress={setCounter} title="Add Task" color="#841584" />
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
