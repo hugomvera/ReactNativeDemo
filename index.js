@@ -22,12 +22,18 @@ const App = () => {
   //this keeps a count so at first it should be the lenght of the data
   const [count, setCount] = useState(DATA.length + 1);
 
+  //loads the origaal DATA the static one and then converts it to reactive variable
+  const [Data, setData] = useState(DATA);
+
   //this keeps track of the input text
   //on changetext gets called when it changes
   const [text, onChangeText] = useState("Todo ...");
 
   //increments the lenght of the count of todo items by 1
   function setCounter() {
+    Alert.alert(`calling setcounter ${count}`);
+    setData([...Data, { id: count, title: text }]);
+    alert(`set function is running `);
     setCount(count + 1);
   }
 
@@ -60,9 +66,13 @@ const App = () => {
 
       <View style={styles.listContainer}>
         <FlatList
-          data={DATA}
+          data={Data}
           renderItem={({ item }) => (
-            <Text style={styles.itemText}>{item.title}</Text>
+            <view>
+              <Text style={styles.itemText}>{item.title}</Text>
+              <Button onPress={() => {}} title="Remove" color="#841584" />
+              view
+            </view>
           )}
           keyExtractor={(item) => item.id.toString()}
         />
