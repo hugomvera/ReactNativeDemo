@@ -34,18 +34,22 @@ const App = () => {
   return (
     <View style={styles.screen}>
       {/*
+
       <Text style={styles.container2}>
         is the number of times you have pressd the Button: {count}
       </Text>
       */}
-      {/*this is the button that will add the todo task*/}
+      {/*
+          this is the button that will add the todo task*/}
       <Button onPress={setCounter} title="Add Task" color="#841584" />
+
       {/* text input for the item users will write here */}
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
         value={text}
       />
+
       {/*this is the flatlist container this is where the data will be rendered
       and every item shown as a list
             data takes in the data
@@ -53,6 +57,7 @@ const App = () => {
             keyextractor will grab the unique id and keep track
 
         */}
+
       <View style={styles.listContainer}>
         <FlatList
           data={DATA}
